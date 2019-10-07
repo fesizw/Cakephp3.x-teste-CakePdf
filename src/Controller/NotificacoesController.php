@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controller;
 
 use App\Controller\AppController;
@@ -12,6 +13,13 @@ use App\Controller\AppController;
  */
 class NotificacoesController extends AppController
 {
+
+    public function initialize()
+    {
+        parent::initialize();
+        $this->loadComponent('RequestHandler');
+    }
+
     /**
      * Index method
      *
@@ -33,10 +41,9 @@ class NotificacoesController extends AppController
      */
     public function view($id = null)
     {
-        $notificaco = $this->Notificacoes->get($id, [
-            'contain' => []
-        ]);
-
+        // $this->viewBuilder()->setClassName('CakePdf.Pdf');
+        $notificaco = $this->Notificacoes->get($id);
+        $this->viewBuilder()->options();
         $this->set('notificaco', $notificaco);
     }
 

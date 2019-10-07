@@ -1,0 +1,2 @@
+
+        <?= $notificaco->htmlText; ?>

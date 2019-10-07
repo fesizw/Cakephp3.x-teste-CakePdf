@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CakePHP(tm) : Rapid Development Framework (https://cakephp.org)
  * Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
@@ -201,3 +202,20 @@ Type::build('timestamp')
 //Inflector::rules('irregular', ['red' => 'redlings']);
 //Inflector::rules('uninflected', ['dontinflectme']);
 //Inflector::rules('transliteration', ['/å/' => 'aa']);
+
+// WkHtmlToPdf Engine: The options are passed as CLI arguments
+// TexToPdf Engine: The options are passed as CLI arguments
+// DomPdf Engine: The options are passed to constructor of Dompdf class
+// Mpdf Engine: The options are passed to constructor of Mpdf class
+### Para trocar a engine de produção do PDF, basca colocar o nome de cada uma na linha marcada
+Configure::write('CakePdf', [
+    'engine' => 'CakePdf.Mpdf', // Local de Seleção de Engine de Pprocessamento de PDF
+    'margin' => [ // definições de layot de impressão de PDF
+        'bottom' => 1, // cada definissão dessa pode ser sobreescrevida na chamada no controller
+        'left' => 1,
+        'right' => 1,
+        'top' => 1,
+    ],
+    'orientation' => 'portrait',
+    'download' => true
+]);

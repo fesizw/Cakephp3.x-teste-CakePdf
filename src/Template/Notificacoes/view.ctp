@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Notificaco $notificaco
@@ -11,6 +12,7 @@
         <li><?= $this->Form->postLink(__('Delete Notificaco'), ['action' => 'delete', $notificaco->id], ['confirm' => __('Are you sure you want to delete # {0}?', $notificaco->id)]) ?> </li>
         <li><?= $this->Html->link(__('List Notificacoes'), ['action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('New Notificaco'), ['action' => 'add']) ?> </li>
+        <li><?= $this->Html->link(__('Download PDF'), '/' . $this->getRequest()->getParam('controller') . '/' . $this->getRequest()->getParam('action') . '/' . $notificaco->id . '.pdf') ?> </li>
     </ul>
 </nav>
 <div class="notificacoes view large-9 medium-8 columns content">
@@ -34,7 +36,9 @@
         </tr>
     </table>
     <div class="row">
-        <h4><?= __('HtmlText') ?></h4>
-        <?= $this->Text->autoParagraph(h($notificaco->htmlText)); ?>
+        <div class="box">
+            <h4><?= __('HtmlText') ?></h4>
+            <?= $notificaco->htmlText; ?>
+        </div>
     </div>
 </div>
